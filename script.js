@@ -27,25 +27,32 @@ const dataExample = [
 ];
 
 let gridView = new GridView();
-gridView.header = "Hello";
-gridView.headerClass = ["header", "site-header"];
-gridView.attribute = {
-    'company': {
-        'label': 'Компания',
-        'src': 'html',      //для интерпретации html тегов
-    },
-    'chef': {
-        'label': 'Директор',
-    },
-    'country': {
-        'label': 'Страна',
-        'value': (data) => {
-            if (data['country'] === 'Germany') {
-                return data['country'] + ' map'
+
+const data = {
+    header : "Название таблицы",
+    headerClass : ["header", "site-header"],
+
+    attribute : {
+        'company': {
+            'label': 'Компания',
+            'src': 'html',      //для интерпретации html тегов
+        },
+        'chef': {
+            'label': 'Директор',
+        },
+        'country': {
+            'label': 'Страна',
+            'value': (data) => {
+                if (data['country'] === 'Germany') {
+                    return data['country'] + ' map'
+                }
+                return data['country'];
             }
-            return data['country'];
         }
-    }
-};
-gridView.data = dataExample;
-gridView.render();
+    },
+
+    data: dataExample,
+
+}
+
+gridView.render(data);

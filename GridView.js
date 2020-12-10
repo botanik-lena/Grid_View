@@ -21,7 +21,7 @@ class GridView {
      * Method set header
      */
 
-    set header(header) {
+    setHeader(header) {
         if (typeof header === "string" && header.trim() != "") {
             this._header = header.trim();
             return true;
@@ -33,7 +33,7 @@ class GridView {
      * Method set headerClass
      */
 
-    set headerClass(headerClass) {
+    setHeaderClass(headerClass) {
         if (typeof headerClass === "object") {
             this._headerClass = headerClass;
             return true;
@@ -45,7 +45,7 @@ class GridView {
      * Method set element
      */
 
-    set element(element) {
+    setElement(element) {
         if (document.querySelector(element)) {
             this._element = element;
             return true;
@@ -57,7 +57,12 @@ class GridView {
      * Method for show GridViewTable
      */
 
-    render() {
+    render(data) {
+        this.setElement(data.element);
+        this.setHeaderClass(data.headerClass);
+        this.setHeader(data.header);
+        this.attribute = data.attribute;
+        this.data = data.data;
         //show header
         if (this._header) {
             const header = document.createElement("h1");
